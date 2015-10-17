@@ -14,8 +14,32 @@ $ npm install --save useful-http
 ```js
 var usefulHttp = require('useful-http');
 
-usefulHttp('Rainbow');
-```
+usefulHttp = usefulHttpBuilder(
+      {
+        staticDirs: [path.join(__dirname, 'static')],
+        serverPagesDir: path.join(__dirname, 'serverPages'),
+        robots: 'Disallow: /',
+        httpLogStream: {write: () => {}}
+      }
+    )
+      .configureSecurity()
+      .handleRobots()
+      .log()
+      .compress()
+      .serveFonts()
+      .renderIndex()
+      .parseBody()
+      .serveStatic()
+      .handleErrors()
+    .build();
+
+// usefulHttp is a node http server that is built using express
+
+// start listening on port 8080
+usefulHttp.listen(8080, cb);
+
+// can close
+usefulHttp.close(cb);
 
 ## License
 
