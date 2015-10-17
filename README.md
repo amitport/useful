@@ -40,6 +40,7 @@ usefulHttp.listen(8080, cb);
 
 // can close
 usefulHttp.close(cb);
+```
 
 ## License
 
