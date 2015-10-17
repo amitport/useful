@@ -1,0 +1,38 @@
+{
+  "name": "useful-http",
+  "version": "0.0.0",
+  "description": "a useful http server",
+  "homepage": "https://github.com/amitport/useful-http",
+  "author": {
+    "name": "Amit Portnoy",
+    "email": "amit.portnoy@gmail.com",
+    "url": "https://github.com/amitport"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "keywords": [
+    "http",
+    "server"
+  ],
+  "repository": "https://github.com/amitport/useful-http.git",
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^0.4.5",
+    "gulp-babel": "^5.1.0",
+    "del": "^2.0.2",
+    "babel-core": "^5.5.0",
+    "isparta": "^3.0.3"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "Apache-2.0"
+}
