@@ -12,12 +12,12 @@ $ npm install --save useful-http
 ## Usage
 
 ```js
-var usefulHttp = require('useful-http');
+var usefulHttpBuilder = require('useful-http');
 
-usefulHttp = usefulHttpBuilder(
+httpServer = usefulHttpBuilder(
       {
-        staticDirs: [path.join(__dirname, 'static')],
-        serverPagesDir: path.join(__dirname, 'serverPages'),
+        staticDirs: ['some-static-dir'],
+        serverPagesDir: 'server-pages-dir',
         robots: 'Disallow: /',
         httpLogStream: {write: () => {}}
       }
@@ -33,13 +33,13 @@ usefulHttp = usefulHttpBuilder(
       .handleErrors()
     .build();
 
-// usefulHttp is a node http server that is built using express
+// got a useful node http server that is built using express
 
 // start listening on port 8080
-usefulHttp.listen(8080, cb);
+httpServer.listen(8080, cb);
 
 // can close
-usefulHttp.close(cb);
+httpServer.close(cb);
 ```
 
 ## License
