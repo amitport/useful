@@ -5,7 +5,7 @@ var babel = require('gulp-babel');
 var del = require('del');
 
 gulp.task('nsp', function (cb) {
-  nsp('package.json', cb);
+  //nsp('package.json', cb);
 });
 
 gulp.task('babel', ['clean'], function () {
