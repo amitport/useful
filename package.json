@@ -8,33 +8,35 @@
     "email": "amit.portnoy@gmail.com",
     "url": "https://github.com/amitport"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "bin": {
+    "useful": "bin/start.js"
+  },
   "keywords": [
     "http",
     "server"
   ],
   "repository": "https://github.com/amitport/useful-http.git",
   "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-preset-es2015": "^6.5.0",
-    "babel-preset-stage-2": "^6.5.0"
+    "standard": "^8.6.0"
   },
   "scripts": {
-    "prepublish": "babel lib --out-dir dist"
+    "test": "standard"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "compression": "^1.6.1",
-    "connect-fonts": "^2.0.2",
-    "connect-fonts-roboto": "0.0.5",
-    "ejs": "^2.4.1",
-    "errorhandler": "^1.4.3",
-    "express": "^4.13.4",
-    "morgan": "^1.7.0",
-    "require-dir": "^0.3.0"
+    "defaults": "^1.0.3",
+    "etag": "^1.7.0",
+    "fast-memoize": "^2.2.0",
+    "koa": "^2.0.0-alpha.8",
+    "koa-bodyparser": "^3.2.0",
+    "koa-cash": "^2.1.0",
+    "koa-conditional-get": "^2.0.0",
+    "koa-convert": "^1.2.0",
+    "koa-logger": "^2.0.1",
+    "koa-router": "^7.0.1",
+    "koa-send": "^3.3.0",
+    "lru-cache": "^4.0.2",
+    "require-dir": "^0.3.1"
   }
 }
