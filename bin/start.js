@@ -18,5 +18,4 @@ if (!config.apiRoutes) {
   } catch (e) {}
 }
 
-
 new UsefulHttp(config).listen()

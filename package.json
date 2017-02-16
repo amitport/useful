@@ -37,6 +37,7 @@
     "koa-router": "^7.0.1",
     "koa-send": "^3.3.0",
     "lru-cache": "^4.0.2",
-    "require-dir": "^0.3.1"
+    "require-dir": "^0.3.1",
+    "socket.io": "^1.7.2"
   }
 }
