@@ -12,9 +12,16 @@ try {
   console.warn('failed to load \'useful.config\'')
   config = {}
 }
+
 if (!config.apiRoutes) {
   try {
     config.apiRoutes = Object.values(requireDir(path.resolve(baseDir, 'api-routes')))
+  } catch (e) {}
+}
+
+if (!config.sioMessageHandlers) {
+  try {
+    config.sioMessageHandlers = Object.values(requireDir(path.resolve(baseDir, 'sio-nessage-handlers')))
   } catch (e) {}
 }
 

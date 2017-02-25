@@ -26,7 +26,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "defaults": "^1.0.3",
-    "etag": "^1.7.0",
+    "etag": "^1.8.0",
     "fast-memoize": "^2.2.0",
     "koa": "^2.0.0-alpha.8",
     "koa-bodyparser": "^3.2.0",
@@ -38,6 +38,9 @@
     "koa-send": "^3.3.0",
     "lru-cache": "^4.0.2",
     "require-dir": "^0.3.1",
-    "socket.io": "^1.7.2"
+    "socket.io": "^1.7.3"
+  },
+  "engines": {
+    "node": "^7.6"
   }
 }
