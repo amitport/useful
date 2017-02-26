@@ -9,7 +9,7 @@ let config
 try {
   config = require(path.resolve(baseDir, 'useful.config'))
 } catch (e) {
-  console.warn('failed to load \'useful.config\'')
+  console.warn('failed to load \'useful.config\'', e)
   config = {}
 }
 
