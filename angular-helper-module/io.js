@@ -1,6 +1,5 @@
 import ioClientFactory from 'socket.io-client';
 
-console.log('loading new io module')
 export function registerHelperModule(angular) {
   angular.module('tbs.io', [])
     .factory('io', ['$log', '$q', '$window', '$location', function ($log, $q, $window, $location) {

@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony
+#!/usr/bin/env node
 const UsefulHttp = require('../lib/index')
 const path = require('path')
 const requireDir = require('require-dir')
