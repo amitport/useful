@@ -1,28 +1,35 @@
 #!/usr/bin/env node
-const UsefulHttp = require('../lib/index')
-const path = require('path')
-const requireDir = require('require-dir')
+if (process.argv[2] === 'build') {
+  require('../lib/build')
+} else {
+  const UsefulHttp = require('../lib/index')
+  const path = require('path')
+  const requireDir = require('require-dir')
 
-const baseDir = process.cwd()
+  const root = process.cwd()
 
-let config
-try {
-  config = require(path.resolve(baseDir, 'useful.config'))
-} catch (e) {
-  console.warn('failed to load \'useful.config\'', e)
-  config = {}
-}
-
-if (!config.apiRoutes) {
+  let config
   try {
-    config.apiRoutes = Object.values(requireDir(path.resolve(baseDir, 'api-routes')))
-  } catch (e) {}
-}
+    // todo check if file exists
+    config = require(path.resolve(root, 'useful.config'))
+  } catch (e) {
+    console.warn('failed to load \'useful.config\'', e)
+    config = {}
+  }
 
-if (!config.sioMessageHandlers) {
-  try {
-    config.sioMessageHandlers = Object.values(requireDir(path.resolve(baseDir, 'sio-nessage-handlers')))
-  } catch (e) {}
-}
+  if (!config.apiRoutes) {
+    try {
+      config.apiRoutes = Object.values(requireDir(path.resolve(root, 'api-routes')))
+    } catch (e) {
+    }
+  }
 
-new UsefulHttp(config).listen()
+  if (!config.sioMessageHandlers) {
+    try {
+      config.sioMessageHandlers = Object.values(requireDir(path.resolve(root, 'sio-nessage-handlers')))
+    } catch (e) {
+    }
+  }
+
+  new UsefulHttp(config).listen()
+}
