@@ -4,8 +4,7 @@ if (process.argv[2] === 'build') {
 } else {
   const UsefulHttp = require('../lib/index')
   const path = require('path')
-  const fs = require('fs');
-  const requireDir = require('require-dir')
+  const fs = require('fs')
 
   const root = process.cwd()
   const configPath = path.resolve(root, 'useful.config.js')

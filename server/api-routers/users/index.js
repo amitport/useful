@@ -1,5 +1,10 @@
 const userRecord = {
-  uid: 1, displayName: 'me', photoURL: 'a', email: 'a@a.com', emailVerified: 'a', disabled: false,
+  uid: 1,
+  displayName: 'me',
+  photoURL: 'a',
+  email: 'a@a.com',
+  emailVerified: 'a',
+  disabled: false,
   // providers: [{
   //   providerId, uid, displayName, photoURL, email
   // }],

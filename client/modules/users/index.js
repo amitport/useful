@@ -1,13 +1,13 @@
-import angular from 'angular';
+import angular from 'angular'
 
-import authModule from './modules/auth';
-import uiPreSignInModule from './modules/ui-pre-sign-in';
-import uiModule from './modules/ui';
+import authModule from './modules/auth'
+import uiPreSignInModule from './modules/ui-pre-sign-in'
+import uiModule from './modules/ui'
 
-import 'angular-translate';
-//todo find unhandled error
+import 'angular-translate'
+// todo find unhandled error
 const usersModule = angular.module('amitport.users',
-  [authModule, uiPreSignInModule, uiModule, 'pascalprecht.translate']);
+  [authModule, uiPreSignInModule, uiModule, 'pascalprecht.translate'])
 
 usersModule.config(['$translateProvider', function ($translateProvider) {
   $translateProvider
@@ -65,7 +65,7 @@ usersModule.config(['$translateProvider', function ($translateProvider) {
     })
     .registerAvailableLanguageKeys(['en', 'he'])
     .determinePreferredLanguage()
-    .useSanitizeValueStrategy(null);
-}]);
+    .useSanitizeValueStrategy(null)
+}])
 
-export default usersModule.name;
+export default usersModule.name

@@ -1,9 +1,9 @@
-import angular from 'angular';
+import angular from 'angular'
 
-const flashModule = angular.module('amitport.flash', []);
+const flashModule = angular.module('amitport.flash', [])
 
 flashModule.factory('ap.flash', ['$window', function ($window) {
-    return ($window.hasOwnProperty('__flash')) ? $window.__flash : {};
-}]);
+  return ($window.hasOwnProperty('__flash')) ? $window.__flash : {}
+}])
 
-export default flashModule.name;
+export default flashModule.name
