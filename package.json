@@ -1,6 +1,6 @@
 {
   "name": "@amitport/useful",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "useful for koa+angular apps",
   "homepage": "https://github.com/amitport/useful",
   "author": {
@@ -47,7 +47,6 @@
     "lru-cache": "^4.0.2",
     "require-dir": "^0.3.1",
     "socket.io": "^1.7.3",
-
     "webpack": "^2.2.1",
     "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.2",
