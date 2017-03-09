@@ -1,8 +1,8 @@
 {
-  "name": "useful-http",
+  "name": "@amitport/useful",
   "version": "0.4.0",
-  "description": "a useful http server",
-  "homepage": "https://github.com/amitport/useful-http",
+  "description": "useful for koa+angular apps",
+  "homepage": "https://github.com/amitport/useful",
   "author": {
     "name": "Amit Portnoy",
     "email": "amit.portnoy@gmail.com",
@@ -16,7 +16,7 @@
     "http",
     "server"
   ],
-  "repository": "https://github.com/amitport/useful-http.git",
+  "repository": "https://github.com/amitport/useful.git",
   "devDependencies": {
     "standard": "^8.6.0",
     "webpack": "^2.2.1",
