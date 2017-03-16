@@ -11,6 +11,7 @@ $ npm install --save useful-http
 
 ## Usage
 
+*not up-to-date*
 ```js
 var usefulHttpBuilder = require('useful-http');
 
@@ -42,9 +43,15 @@ httpServer.listen(8080, cb);
 httpServer.close(cb);
 ```
 
+## Development
+
+When developing this lib and testing a dependent project:
+- npm link to this library
+- `node --preserve-symlinks -r @amitport/useful/bin/start`
+
 ## License
 
-Apache-2.0 © [Amit Portnoy](https://github.com/amitport)
+AGPL © [Amit Portnoy](https://github.com/amitport)
 
 
 [npm-image]: https://badge.fury.io/js/useful-http.svg

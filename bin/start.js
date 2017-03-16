@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --preserve-symlinks
 if (process.argv[2] === 'build') {
   require('../lib/build')
 } else {
@@ -16,5 +16,9 @@ if (process.argv[2] === 'build') {
     config.apiRouters = files.map(_ => require(path.resolve(root, `server/api-routers/${_}`)))
   }
 
+  if (__dirname !== root) {
+    config.apiRouters.push(...(fs.readdirSync(path.resolve(__dirname, '../server/api-routers'))
+                            .map(_ => require(path.resolve(__dirname, `../server/api-routers/${_}`)))))
+  }
   new UsefulHttp(config).listen()
 }

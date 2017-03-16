@@ -15,16 +15,17 @@ const userRecord = {
 
 const Router = require('koa-router')
 
-module.exports = new Router()
-  .post('/auth/actions/sign-in', (ctx) => {
-    // todo sign in
-  })
-  .post('/auth/actions/sign-out', (ctx) => {
-    // todo sign in
-  })
-  .get('/users', (ctx) => {
+module.exports = new Router({prefix: '/xx2'})
+  // .post('/auth/actions/sign-in', (ctx) => {
+  //   // todo sign in
+  // })
+  // .post('/auth/actions/sign-out', (ctx) => {
+  //   // todo sign in
+  // })
+  .get('/', (ctx) => {
+    console.log('what?')
     ctx.body = [1, 3, 54]
   })
-  .get('/users/me', (ctx) => {
-    ctx.body = userRecord
-  })
+  // .get('/users/me', (ctx) => {
+  //   ctx.body = userRecord
+  // })
