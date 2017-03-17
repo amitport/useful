@@ -51,7 +51,7 @@ When developing this lib and testing a dependent project:
 
 ## License
 
-AGPL © [Amit Portnoy](https://github.com/amitport)
+[AGPL-3.0](https://spdx.org/licenses/AGPL-3.0.html) © [Amit Portnoy](https://github.com/amitport)
 
 
 [npm-image]: https://badge.fury.io/js/useful-http.svg
