@@ -1,4 +1,4 @@
-#!/usr/bin/env node --preserve-symlinks
+#!/usr/bin/env node
 if (process.argv[2] === 'build') {
   require('../lib/build')
 } else {
@@ -10,15 +10,9 @@ if (process.argv[2] === 'build') {
   const configPath = path.resolve(root, 'useful.config.js')
   const config = (fs.existsSync(configPath)) ? require(configPath) : {}
 
-  if (!config.apiRouters) {
-    const files = fs.readdirSync(path.resolve(root, 'server/api-routers'))
+  const loadConfigDirs = require('../lib/load-config-dirs')
 
-    config.apiRouters = files.map(_ => require(path.resolve(root, `server/api-routers/${_}`)))
-  }
+  Object.assign(config, loadConfigDirs(`${__dirname}/..`, root))
 
-  if (__dirname !== root) {
-    config.apiRouters.push(...(fs.readdirSync(path.resolve(__dirname, '../server/api-routers'))
-                            .map(_ => require(path.resolve(__dirname, `../server/api-routers/${_}`)))))
-  }
   new UsefulHttp(config).listen()
 }

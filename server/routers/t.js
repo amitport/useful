@@ -1,4 +1,4 @@
-const Router = require('../../lib/router')
+const Router = require('koa-router')
 
 module.exports = new Router({prefix: '/xx'})
   .get('/', (ctx) => {
