@@ -1,12 +1,12 @@
 const Router = require('koa-router')
 const {googleCb} = require('./google')
-const {signInWithEmail, emailCb} = require('./email')
+const {signInWithEmail, verifyEmail} = require('./email')
 
 const auth = Router({prefix: '/auth'})
 
 auth.get('/google', googleCb)
 
-auth.post('/signInWithEmail', signInWithEmail)
-auth.get('/et/:et', emailCb)
+auth.post('/actions/sign-in-with-email', signInWithEmail)
+auth.get('/actions/verify-email', verifyEmail)
 
 module.exports = auth

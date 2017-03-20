@@ -11,7 +11,7 @@ if (process.argv[2] === 'build') {
   const config = (fs.existsSync(configPath)) ? require(configPath) : {}
 
   const loadConfigDirs = require('../lib/load-config-dirs')
-  Object.assign(config, loadConfigDirs(`${__dirname}/../base-module`, root))
+  Object.assign(config, loadConfigDirs(`${__dirname}/../module`, root))
 
   new UsefulHttp(config).listen()
 }

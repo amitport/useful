@@ -33,12 +33,19 @@ const {encodeUser} = require('../auth/tokens')
 
 const users = Router({prefix: '/users'})
 
-users.get('/me', ensure.user, async (ctx) => {
-  const user = await User.findById(ctx.state.user._id, '-_id username role avatarImageUrl', {lean: true}).exec()
-  if (user == null) {
+users.get('/me', /* ensure.user, */async (ctx) => {
+  if (!ctx.session.user) {
     ctx.throw(404)
+  } else {
+    ctx.body = ctx.session.user
   }
-  ctx.body = user
+  // ensure.user
+
+  // const user = await User.findById(ctx.state.user._id, '-_id username role avatarImageUrl', {lean: true}).exec()
+  // if (user == null) {
+  //   ctx.throw(404)
+  // }
+  // ctx.body = user
 })
 
 users.get('/', ensure.admin, async (ctx) => {

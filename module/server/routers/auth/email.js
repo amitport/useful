@@ -10,7 +10,7 @@ const {encodeUser, encodeAuth} = require('../../auth/tokens')
 // keep email tokens for an hour check every 10 minutes for deleting expired tokens
 const emailTokenStore = new NodeCache({stdTTL: 3600, checkperiod: 600})
 
-module.exports.signInWithEmail = async function signInWithEmail (ctx) {
+module.exports.signInWithEmail = async (ctx) => {
   const {email, originalPath} = ctx.request.body
   if (originalPath == null || !validator.isIn(originalPath, ['/', '/users/me']) || // hard-code white-list redirect paths
     email == null || !validator.isEmail(email)) {
@@ -22,15 +22,15 @@ module.exports.signInWithEmail = async function signInWithEmail (ctx) {
     ctx.throw(500)
   }
 
-  const verificationPath = `et/${emailToken}`
+  const verificationPath = `api/auth/actions/verify-email?token=${emailToken}`
   await ctx.mailer.sendVerificationEmail({to: email, verificationPath})
   // next if anyone calls /et/<emailToken> before exp it will be redirected to originalPath
 
   ctx.status = 202 // (Accepted)
 }
 
-module.exports.emailCb = async function emailCb (ctx) {
-  const emailToken = ctx.params.et
+module.exports.verifyEmail = async (ctx) => {
+  const emailToken = ctx.query.token
 
   const stored = emailTokenStore.get(emailToken)
   if (stored == null) {
@@ -40,12 +40,18 @@ module.exports.emailCb = async function emailCb (ctx) {
 
   const user = await User.findOne({email: stored.email}).select('role').lean().exec()
 
-  const tokens = (user != null) ? {
-    access: encodeUser(user)
-  } : {
-    auth: encodeAuth({method: 'email', email: stored.email})
+  // const tokens = (user != null) ? {
+  //   access: encodeUser(user)
+  // } : {
+  //   auth: encodeAuth({method: 'email', email: stored.email})
+  // }
+  if (user != null) {
+    ctx.session.user = user
+  } else {
+    ctx.session.user = await User.create({password: 'xx', username: 'u1', email: stored.email})
   }
 
-  ctx.state.__flash = JSON.stringify({tokens, originalPath: stored.originalPath})
-  ctx.render('index')
+  ctx.redirect('/')// `/#!/${redirectTo}`);
+  // ctx.state.__flash = JSON.stringify({tokens, originalPath: stored.originalPath})
+  // ctx.render('index')
 }

@@ -114,7 +114,7 @@ usersModule.provider('ap.user',
               }
             },
             signInWithEmail (email) {
-              return get$http().post('/api/auth/signInWithEmail', {email, originalPath: $location.path()})
+              return get$http().post('/api/auth/actions/sign-in-with-email', {email, originalPath: $location.path()})
             },
             signInWithAuthProvider () {
               const width = 452
@@ -159,7 +159,18 @@ top=${($window.screenY + (($window.outerHeight - height) / 2.5))}`)
     }
   }])
 
-usersModule.run(['ap.user', function (user) {
+usersModule.run(['ap.user', '$http', '$q', '$log', function (user, $http, $q, $log) {
     // try and sign in immediately
   user.attemptImmediateSignIn()
+  $http.get('api/users/me')
+    .then(function ({data}) {
+      $log.info('signed in as ' + JSON.stringify(data))
+    })
+    .catch(function (rejection) {
+      if (rejection.status === 404) {
+        $log.info('not signed in')
+      } else {
+        return $q.reject(rejection)
+      }
+    })
 }])
