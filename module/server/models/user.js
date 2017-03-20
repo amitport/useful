@@ -66,4 +66,6 @@ UserSchema.post('save', function (error, doc, next) {
   next(error)
 })
 
+//todo Account Locking - http://devsmash.com/blog/implementing-max-login-attempts-with-mongoose
+
 module.exports = mongoose.model('User', UserSchema)
