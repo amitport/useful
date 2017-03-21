@@ -8,34 +8,46 @@
         </div>
     </div>
     <div class="sign-in-state" ng-switch-when="selection" layout="column">
-        <md-whiteframe class="md-whiteframe-2dp" style="margin: 8px; border-radius: 3px;">
-
-            <form name="$ctrl.emailSignInForm" layout="row" layout-align="start center" layout-padding>
-                <div layout="column"><span style="font-size:14px">{{'AUTHENTICATE_REQUEST_PREFIX' | translate}}
-        {{'EMAIL_LONG' | translate}}
+        <md-button class="md-raised" ng-show="!$ctrl.showCustom" ng-click="$ctrl.showCustom = true">
+          <span layout="row" layout-align="start center">
+              <span style="width:12px;"></span>
+            <md-icon>person</md-icon>
+            <span flex style="margin:0 20px; text-align: start; font-weight: normal; text-transform: none;">
+                Sign in with your &lt;CUSTOM&gt; account
+            </span>
+          </span>
+        </md-button>
+        <md-whiteframe ng-show="$ctrl.showCustom" class="md-whiteframe-2dp" style="margin: 8px; border-radius: 3px;">
+            <md-content>
+            <form name="$ctrl.emailSignInForm" layout="column" layout-align="start stretch" layout-padding>
+                <span style="font-size:14px">{{'AUTHENTICATE_REQUEST_PREFIX' | translate}}
+        an {{'EMAIL_LONG' | translate}}
                 </span>
-                    <md-input-container class="md-block">
-                        <md-icon>email</md-icon>
-                        <input name="email" style="min-width: 230px;" ng-model="$ctrl.email" type="email" required
-                               ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
-                               placeholder="{{'EMAIL' | translate}}">
-                        <div ng-messages="$ctrl.emailSignInForm.email.$error">
-                            <div ng-message="required">{{'REQUIRED_FIELD' | translate}}</div>
-                            <div ng-message="email">{{'INVALID_EMAIL_FIELD' | translate}}</div>
-                            <div ng-message="server">{{'SERVER_ERR_FIELD' | translate}}</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <md-icon>lock</md-icon>
-                        <input name="password" style="min-width: 230px;" ng-model="$ctrl.password" type="password"
-                               ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
-                               placeholder="password (optional)">
-                    </md-input-container>
-                </div>
-                <md-button style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">{{'CONTINUE' |
-                    translate}}
-                </md-button>
+                <md-input-container>
+                    <md-icon>person</md-icon>
+                    <input name="email" ng-model="$ctrl.email" type="email" required
+                           ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
+                           placeholder="email or username">
+                    <div ng-messages="$ctrl.emailSignInForm.email.$error">
+                        <div ng-message="required">{{'REQUIRED_FIELD' | translate}}</div>
+                        <div ng-message="email">{{'INVALID_EMAIL_FIELD' | translate}}</div>
+                        <div ng-message="server">{{'SERVER_ERR_FIELD' | translate}}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <md-icon>lock</md-icon>
+                    <input name="password" ng-model="$ctrl.password" type="password"
+                           ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
+                           placeholder="password">
+                </md-input-container>
+                <md-button class="md-raised md-primary md-hue-1" style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">Sign In</md-button>
             </form>
+            </md-content>
+            <div layout="row" layout-align="space-between stretch">
+                <md-button>Forgot Password?</md-button>
+                <div layout layout-align="center center">◆</div>
+                <md-button>Create a New Account</md-button>
+            </div>
         </md-whiteframe>
 
         <md-button ng-click="$ctrl.signInWithAuthProvider('google')" class="md-raised">
