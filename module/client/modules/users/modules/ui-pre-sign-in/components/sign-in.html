@@ -1,0 +1,10 @@
+<div ng-switch="$ctrl.state">
+    <select-auth-provider ng-switch-when="select-auth-provider"></select-auth-provider>
+
+    <own-sign-in ng-switch-when="own-sign-in"></own-sign-in>
+    <own-sign-up ng-switch-when="own-sign-up"></own-sign-up>
+    <own-forgot-password ng-switch-when="own-forgot-password"></own-forgot-password>
+    <own-await-email-validation ng-switch-when="own-await-email-validation"></own-await-email-validation>
+
+    <external-select-username ng-switch-when="external-select-username"></external-select-username>
+</div>

@@ -1,7 +1,7 @@
 import uiPreSignInModule from './base'
 import templateUrl from './sign-in-dialog.html'
 
-import './sign-in.js'
+// import './sign-in.js'
 
 uiPreSignInModule.factory('ap.signInDialog', ['$mdDialog', function ($mdDialog) {
   return {

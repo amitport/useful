@@ -1,0 +1,32 @@
+<md-whiteframe class="md-whiteframe-2dp" style="margin: 8px; border-radius: 3px;">
+    <md-content>
+        <form name="$ctrl.emailSignInForm" layout="column" layout-align="start stretch" layout-padding>
+                <span style="font-size:14px">{{'AUTHENTICATE_REQUEST_PREFIX' | translate}}
+        an {{'EMAIL_LONG' | translate}}
+                </span>
+            <md-input-container>
+                <md-icon>person</md-icon>
+                <input name="email" ng-model="$ctrl.email" type="email" required autofocus
+                       ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
+                       placeholder="email or username">
+                <div ng-messages="$ctrl.emailSignInForm.email.$error">
+                    <div ng-message="required">{{'REQUIRED_FIELD' | translate}}</div>
+                    <div ng-message="email">{{'INVALID_EMAIL_FIELD' | translate}}</div>
+                    <div ng-message="server">{{'SERVER_ERR_FIELD' | translate}}</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <md-icon>lock</md-icon>
+                <input name="password" ng-model="$ctrl.password" type="password" required
+                       ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
+                       placeholder="password">
+            </md-input-container>
+            <md-button class="md-raised md-primary md-hue-1" style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">Sign In</md-button>
+        </form>
+    </md-content>
+    <div layout="row" layout-align="space-between stretch">
+        <md-button ng-click="$ctrl.forgotPassword()">Forgot Password?</md-button>
+        <div layout layout-align="center center">◆</div>
+        <md-button ng-click="$ctrl.signUp()">Create a New Account</md-button>
+    </div>
+</md-whiteframe>

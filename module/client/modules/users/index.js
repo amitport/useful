@@ -23,7 +23,7 @@ usersModule.config(['$translateProvider', function ($translateProvider) {
       AUTHENTICATE_REQUEST_PREFIX: 'Sign in using',
       INVALID_EMAIL_FIELD: 'invalid email format',
       EMAIL_SENT_TITLE: 'You\'re almost there!',
-      EMAIL_SENT_SUB: 'A confirmation link should arrive in your email shortly',
+      EMAIL_SENT_SUB: 'A confirmation link should arrive in your mailbox shortly',
       FINISH: 'Finish',
       REQUIRED_FIELD: 'required field',
       MAX_LENGTH_12: 'please use no more than 12 characters',
