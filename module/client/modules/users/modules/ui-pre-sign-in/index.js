@@ -12,4 +12,16 @@ Object.values(componentsArgs).forEach((componentArgs) => {
   uiPreSignInModule.component.apply(uiPreSignInModule, componentArgs)
 })
 
+uiPreSignInModule.directive('equalTo', () => ({
+    restrict: 'A',
+    require: 'ngModel',
+    scope: {
+      equalTo: '<'
+    },
+    link(scope, element, attributes, ngModel) {
+      ngModel.$validators.equalTo = (modelValue) => modelValue === scope.equalTo
+    }
+  })
+)
+
 export default uiPreSignInModule.name

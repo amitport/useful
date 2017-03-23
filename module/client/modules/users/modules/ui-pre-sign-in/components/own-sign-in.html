@@ -1,9 +1,9 @@
 <md-whiteframe class="md-whiteframe-2dp" style="margin: 8px; border-radius: 3px;">
     <md-content>
+        <div layout layout-align="center center">
+            <h2 class="md-display-2">Sign in</h2>
+        </div>
         <form name="$ctrl.emailSignInForm" layout="column" layout-align="start stretch" layout-padding>
-                <span style="font-size:14px">{{'AUTHENTICATE_REQUEST_PREFIX' | translate}}
-        an {{'EMAIL_LONG' | translate}}
-                </span>
             <md-input-container>
                 <md-icon>person</md-icon>
                 <input name="email" ng-model="$ctrl.email" type="email" required autofocus
@@ -20,13 +20,24 @@
                 <input name="password" ng-model="$ctrl.password" type="password" required
                        ng-keyup="$event.keyCode == 13 && $ctrl.signInWithEmail()"
                        placeholder="password">
+                <div ng-messages="$ctrl.emailSignInForm.password.$error">
+                    <div ng-message="required">{{'REQUIRED_FIELD' | translate}}</div>
+                </div>
             </md-input-container>
-            <md-button class="md-raised md-primary md-hue-1" style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">Sign In</md-button>
+            <md-button class="md-raised md-primary md-hue-1" style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">
+                Go
+            </md-button>
         </form>
     </md-content>
-    <div layout="row" layout-align="space-between stretch">
-        <md-button ng-click="$ctrl.forgotPassword()">Forgot Password?</md-button>
-        <div layout layout-align="center center">◆</div>
-        <md-button ng-click="$ctrl.signUp()">Create a New Account</md-button>
+    <div layout="row" layout-align="space-between center">
+        <div>
+            <a md-button ng-click="$ctrl.forgotPassword()"
+               style="text-transform: none;">Forgot password?</a>
+        </div>
+        <div>
+
+            <a md-button class="md-primary" style="text-transform: none; font-weight: bold;" ng-click="$ctrl.signUp()">
+                Create an account</a>
+        </div>
     </div>
 </md-whiteframe>

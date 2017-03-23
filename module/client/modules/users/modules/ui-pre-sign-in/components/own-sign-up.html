@@ -1,1 +1,71 @@
-own-sign-up
+<md-whiteframe class="md-whiteframe-2dp" style="margin: 8px; border-radius: 3px;">
+    <md-content>
+        <div layout layout-align="center center">
+            <h2 class="md-display-2">Join &lt;custom&gt;</h2>
+        </div>
+        <!--<form name="$ctrl.resetPasswordForm" layout="column" layout-align="start stretch" layout-padding>-->
+            <!--<md-input-container>-->
+                <!--<label>Email</label>-->
+                <!--<input ng-model="$ctrl.email" name="email" type="email" required-->
+                       <!--ng-keyup="$event.keyCode === 13 && $ctrl.submitFlow()">-->
+                <!--<div ng-messages="passwordRecoveryForm.email.$error">-->
+                    <!--<div ng-message="required">Your email is required</div>-->
+                    <!--<div ng-message="email">The provided email is invalid</div>-->
+                <!--</div>-->
+            <!--</md-input-container>-->
+            <!--<md-button class="md-raised md-primary md-hue-1" style="font-weight: normal" ng-click="$ctrl.signInWithEmail()">-->
+                <!--Go-->
+            <!--</md-button>-->
+        <!--</form>-->
+
+        <form name="$ctrl.registrationForm" layout="column" layout-align="start stretch" layout-padding>
+            <md-input-container>
+                <label>Email</label>
+                <input ng-model="$ctrl.email" name="email" type="email" ng-disabled="$ctrl.inviteMode" required>
+                <div ng-messages="$ctrl.registrationForm.email.$error">
+                    <div ng-message="required">Your email is required</div>
+                    <div ng-message="email">The provided email is invalid</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Username</label>
+                <input ng-model="$ctrl.username" name="username" type="text" required>
+                <div ng-messages="$ctrl.registrationForm.username.$error">
+                    <div ng-message="required">Username is required</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input ng-model="$ctrl.password" name="password" type="password" required>
+                <div ng-messages="$ctrl.registrationForm.password.$error">
+                    <div ng-message="required">Password is required</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Confirm Password</label>
+                <input ng-model="$ctrl.repeatedPassword" name="repeatedPassword" type="password" equal-to="$ctrl.password" required>
+                <div ng-messages="$ctrl.registrationForm.repeatedPassword.$error">
+                    <div ng-message="required">Please confirm your password</div>
+                    <div ng-message="equalTo">Your password does not match</div>
+                </div>
+            </md-input-container>
+
+            <div layout="row">
+                <md-input-container>
+                    <md-checkbox class="md-primary" ng-checked="true" disabled>
+                        I agree to the <a href="">Terms of Service and Privacy Policy</a>
+                    </md-checkbox>
+                </md-input-container>
+                <div flex style="min-width: 30px;"></div>
+
+                <div layout="column" layout-align="center">
+                    <div layout="row">
+                        <md-button ng-click="$ctrl.register()" class="md-raised md-primary md-hue-1" style="font-weight: normal">
+                            Register
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </md-content>
+</md-whiteframe>
